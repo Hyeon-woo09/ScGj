@@ -93,6 +93,9 @@ MonoBehaviour:
   MiniGamePrefabs:
   - {fileID: 4733324634396766665, guid: 96b174b5a50b6e5498490ccae770b823, type: 3}
   - {fileID: 4733324634396766665, guid: 125408f763c8262468435ff8019bfb8c, type: 3}
+  - {fileID: 4733324634396766665, guid: 2d3964a1e1cd50548bf28a9630dd9679, type: 3}
+  - {fileID: 4733324634396766665, guid: 3a3975e6e2d7c5f41b7e1ff8b2c9185f, type: 3}
+  - {fileID: 1010552680109631359, guid: 83d6957d048933d439d6b09d3ce89ca2, type: 3}
 --- !u!114 &488507278848622271
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -231,8 +231,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -638,9 +638,10 @@ MonoBehaviour:
   - {fileID: 93281666812302988}
   reed: {fileID: 4410666381895849899, guid: 4cc4bd7a73b71d140ad41340728cdf04, type: 3}
   completePlate: {fileID: 3777151444614239256}
-  cursorImage: {fileID: 2800000, guid: d59f726f77c414c4a8f138b22a5543ef, type: 3}
-  cursorImageClick: {fileID: 2800000, guid: 861c0ea9a57e31a4684049e1cd0ba47e, type: 3}
+  cursorImage: {fileID: 2800000, guid: 18f55eb2f0d7a5f4d88e45599ab39da9, type: 3}
+  cursorImageClick: {fileID: 2800000, guid: d59f726f77c414c4a8f138b22a5543ef, type: 3}
   guideText: {fileID: 1704396660292314432}
+  disableButton: {fileID: 0}
 --- !u!1 &5243807781005550226
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,9 @@ public class RestoreButton : MonoBehaviour
     {
         ReedPlant,
         EggProtect,
-        WaterwayRestore
+        WaterwayRestore,
+        FindGoby,
+        CrabRace
     }
 
     public MiniGames playMiniGame;
@@ -25,6 +27,18 @@ public class RestoreButton : MonoBehaviour
         else if (playMiniGame == MiniGames.EggProtect)
         {
             game.GetComponent<EggProtect>().disableButton = gameObject;
+        }
+        else if (playMiniGame == MiniGames.WaterwayRestore)
+        {
+            game.GetComponent<WaterwayRestore>().disableButton = gameObject;
+        }
+        else if (playMiniGame == MiniGames.FindGoby)
+        {
+            game.GetComponent<FindGoby>().disableButton = gameObject;
+        }
+        else if (playMiniGame == MiniGames.CrabRace)
+        {
+            game.GetComponent<CrabRace>().disableButton = gameObject;
         }
     }
 }

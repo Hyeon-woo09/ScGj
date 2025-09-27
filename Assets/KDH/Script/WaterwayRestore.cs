@@ -1,26 +1,102 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public class WaterwayRestore : MonoBehaviour
 {
     public GameObject linePrefab;
     public GameObject dragEffectPrefab;
+    public GameObject guideLine;
     public Image completePlate;
-    public RectTransform canvasRectTransform;
 
+    public List<RectTransform> allNodes;
+
+    public GameObject disableButton;
+    private RectTransform canvasRectTransform;
     private bool isDrawing = false;
     private Vector2 startPos;
+    private RectTransform startNode;
     private GameObject currentLine;
     private GameObject currentDragEffect;
 
-    public void StartDrawingLine(RectTransform startNodeRect)
-    {
-        if (isDrawing) return;
+    private GraphicRaycaster graphicRaycaster;
+    private PointerEventData pointerEventData;
 
+    void Start()
+    {
+        canvasRectTransform = transform.parent.GetComponent<RectTransform>();
+        graphicRaycaster = canvasRectTransform.GetComponentInParent<GraphicRaycaster>();
+        pointerEventData = new PointerEventData(EventSystem.current);
+    }
+
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            startNode = GetNodeUnderMouse();
+            if (startNode != null)
+            {
+                StartDrawingLine(startNode);
+            }
+        }
+
+        if (isDrawing)
+        {
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                canvasRectTransform, Input.mousePosition, null, out Vector2 mousePos);
+
+            DrawUILine(startPos, mousePos, currentLine);
+
+            if (currentDragEffect != null)
+            {
+                currentDragEffect.GetComponent<RectTransform>().anchoredPosition = mousePos;
+            }
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (isDrawing)
+            {
+                RectTransform endNode = GetNodeUnderMouse();
+
+                if (endNode != null && endNode != startNode)
+                {
+                    StopDrawingLine(endNode, true);
+                }
+                else
+                {
+                    StopDrawingLine(null, false);
+                }
+            }
+        }
+    }
+
+    private RectTransform GetNodeUnderMouse()
+    {
+        pointerEventData.position = Input.mousePosition;
+        var results = new List<RaycastResult>();
+        graphicRaycaster.Raycast(pointerEventData, results);
+
+        foreach (var result in results)
+        {
+            if (allNodes.Contains(result.gameObject.GetComponent<RectTransform>()))
+            {
+                return result.gameObject.GetComponent<RectTransform>();
+            }
+        }
+        return null;
+    }
+
+    void StartDrawingLine(RectTransform startNodeRect)
+    {
+        guideLine.SetActive(false);
         isDrawing = true;
+        startNode = startNodeRect;
         startPos = startNodeRect.anchoredPosition;
 
         currentLine = Instantiate(linePrefab, canvasRectTransform);
+        currentLine.GetComponent<Image>().raycastTarget = false;
         currentLine.SetActive(true);
 
         if (dragEffectPrefab != null)
@@ -29,21 +105,17 @@ public class WaterwayRestore : MonoBehaviour
         }
     }
 
-    public void StopDrawingLine(RectTransform endNodeRect)
+    void StopDrawingLine(RectTransform endNodeRect, bool isSuccess)
     {
-        if (!isDrawing) return;
-
-        if (endNodeRect != null)
+        if (isSuccess)
         {
             Vector2 endPos = endNodeRect.anchoredPosition;
             DrawUILine(startPos, endPos, currentLine);
-
-            Debug.Log("연결 성공!");
-
-            currentLine = null;
+            Complete();
         }
 
         isDrawing = false;
+        startNode = null;
 
         if (currentLine != null)
         {
@@ -55,36 +127,13 @@ public class WaterwayRestore : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        if (isDrawing)
-        {
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                canvasRectTransform, Input.mousePosition, Camera.main, out Vector2 mousePos);
-
-            DrawUILine(startPos, mousePos, currentLine);
-
-            if (currentDragEffect != null)
-            {
-                currentDragEffect.GetComponent<RectTransform>().anchoredPosition = mousePos;
-            }
-
-            if (Input.GetMouseButtonUp(0))
-            {
-                StopDrawingLine(null);
-            }
-        }
-    }
-
     void DrawUILine(Vector2 start, Vector2 end, GameObject lineObj)
     {
         if (lineObj == null) return;
         RectTransform rectTransform = lineObj.GetComponent<RectTransform>();
-
         Vector2 direction = (end - start).normalized;
         float distance = Vector2.Distance(start, end);
-
-        rectTransform.sizeDelta = new Vector2(distance, 5f);
+        rectTransform.sizeDelta = new Vector2(distance, 50f);
         rectTransform.anchoredPosition = start + direction * distance * 0.5f;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         rectTransform.rotation = Quaternion.Euler(0, 0, angle);
@@ -92,12 +141,16 @@ public class WaterwayRestore : MonoBehaviour
 
     void Complete()
     {
+        Destroy(currentLine);
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         Debug.Log("보상 지급");
+        disableButton.gameObject.SetActive(false);
         completePlate.gameObject.SetActive(true);
     }
 
     public void Return()
     {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         Destroy(gameObject);
     }
 }
