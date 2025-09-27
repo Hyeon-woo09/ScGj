@@ -1,4 +1,5 @@
 using System;
+using Scenes.Common;
 using UnityEngine;
 
 namespace Scenes.MainGame
@@ -7,32 +8,35 @@ namespace Scenes.MainGame
     {
         GameData _gameData;
         GameManager _gameManager;
+        GameDataManager _gameDataManager;
         public GameObject photo;
+        public GameData gameData;
+        bool condition = true;
         
 
         void Awake()
         {
             _gameManager = FindObjectOfType<GameManager>();
-            _gameData =  FindObjectOfType<GameData>();
+            _gameDataManager = FindObjectOfType<GameDataManager>();
+            _gameData = _gameDataManager.gameData;
         }
-
-        bool condition = true;
         
         public void CheckPoint()
         {
             if (condition)
             {
                 _gameData.currentPoints += 1;
+                _gameDataManager.Save();
                 Out();
             }
         }
 
         public void Out()
         {
+            _gameManager.ResetPoints();
             _gameManager.currentSpot.SetActive(false);
             _gameManager.scoreObject.SetActive(true);
             photo.SetActive(false);
-            _gameManager.ResetPoints();
         }
     }
 }

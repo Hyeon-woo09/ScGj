@@ -331,6 +331,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1855768146}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 383822377}
         m_TargetAssemblyTypeName: Scenes.MainGame.ButtonOnclick, Assembly-CSharp
         m_MethodName: OnButtonClicked
@@ -355,6 +367,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d9eea9dd23aa8bc99416da33d52ab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  neededPoint: 7
+  spotType: 0
 --- !u!1 &522407711
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,7 +862,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSpot: {fileID: 0}
-  gameData: {fileID: 768023248}
+  gameData:
+    currentPoints: 0
+    neededPointSpot: 
+    neededPointMap: 
+    clearPoint: 1000
+    spotList: []
+    mapList: []
+    clearList: []
   scoreText: {fileID: 595252940}
   scoreObject: {fileID: 1855768146}
 --- !u!1 &768023247
@@ -860,30 +881,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 768023249}
-  - component: {fileID: 768023248}
+  - component: {fileID: 768023250}
   m_Layer: 0
-  m_Name: GameData
+  m_Name: GameDataManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &768023248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 768023247}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75c9f4a5dc7ae1ac38fd2c27d1c01dd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentPoints: 0
-  spotList: []
-  mapList: []
-  clearList: []
 --- !u!4 &768023249
 Transform:
   m_ObjectHideFlags: 0
@@ -899,6 +904,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &768023250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768023247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4a572c884cf40ea86daee259807ec7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameData:
+    currentPoints: 0
+    neededPointSpot: 0600000007000000
+    neededPointMap: 
+    clearPoint: 1000
+    spotList:
+    - {fileID: 1021262858815667684}
+    - {fileID: 383822372}
+    mapList: []
+    clearList: []
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1249,6 +1276,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1855768147}
   - component: {fileID: 1855768148}
+  - component: {fileID: 1855768149}
+  - component: {fileID: 1855768150}
   m_Layer: 5
   m_Name: ScorePointUI
   m_TagString: Untagged
@@ -1290,6 +1319,70 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   photo: {fileID: 8840532090532738342}
+  gameData:
+    currentPoints: 0
+    neededPointSpot: 
+    neededPointMap: 
+    clearPoint: 1000
+    spotList: []
+    mapList: []
+    clearList: []
+--- !u!114 &1855768149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855768146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1855768150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855768146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45bd92dbee3e0f70696a6b583164db8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1911121574
 GameObject:
   m_ObjectHideFlags: 0
@@ -3784,6 +3877,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d9eea9dd23aa8bc99416da33d52ab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  neededPoint: 6
+  spotType: 1
 --- !u!1 &3917647779109171456
 GameObject:
   m_ObjectHideFlags: 0

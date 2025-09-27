@@ -1,11 +1,16 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Scenes.MainGame
+namespace Scenes.Common
 {
-    public class GameData : MonoBehaviour
+    [Serializable]
+    public class GameData
     {
         public int currentPoints = 0;
+        public List<int> neededPointSpot;
+        public List<int> neededPointMap;
+        public int clearPoint = 1000;
 
         public List<GameObject> spotList;
         public List<GameObject> mapList; 
