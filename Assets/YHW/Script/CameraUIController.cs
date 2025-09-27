@@ -15,7 +15,7 @@ public class CameraUIController : MonoBehaviour
     [SerializeField] private float moveSpeed = 100f;
     [SerializeField] private List<Collider2D> targetColliders; // 체크할 콜라이더들
 
-    [SerializeField]private GameData gameData; // 게임 데이터
+    [SerializeField]private GameDataManager gameDataManager; // 게임 데이터
 
     private Vector2 minLimit, maxLimit;
     private bool isCapturing = false;
@@ -111,7 +111,8 @@ public class CameraUIController : MonoBehaviour
         if (allInside)
         {
             Debug.Log("모든 콜라이더가 캡쳐 화면 안에 있습니다!");
-            gameData.currentPoints++;
+            gameDataManager.gameData.currentPoints++;
+            gameDataManager.Save();
         }
         else
         {
