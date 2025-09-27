@@ -19,8 +19,10 @@ public class CameraUIController : MonoBehaviour
 
     private Vector2 minLimit, maxLimit;
     private bool isCapturing = false;
+    
+    
 
-    void Start()
+    private void OnEnable()
     {
         // UI 시작 시 랜덤 위치
         Vector2 randomPos = new Vector2(
