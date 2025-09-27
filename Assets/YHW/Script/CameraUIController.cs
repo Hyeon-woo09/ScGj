@@ -19,7 +19,7 @@ public class CameraUIController : MonoBehaviour
 
     [SerializeField]private ScriptableGameData gameData;
 
-    private bool failed = false;
+    private bool failed = true;
 
 
     private Vector2 minLimit, maxLimit;
