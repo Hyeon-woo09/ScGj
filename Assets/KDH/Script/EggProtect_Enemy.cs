@@ -2,10 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Spine.Unity;
 
 public class EggProtect_Enemy : MonoBehaviour
 {
     bool move = true;
+    SkeletonGraphic skeleton;
+
+    private void Start()
+    {
+        skeleton = GetComponent<SkeletonGraphic>();
+    }
+
     public IEnumerator EggTracking(float duration, EggProtect egp)
     {
         float elapsedTime = 0f;
@@ -26,11 +34,7 @@ public class EggProtect_Enemy : MonoBehaviour
 
     public void Click()
     {
-        Image enemyImage = gameObject.GetComponent<Image>();
-        if (enemyImage != null)
-        {
-            enemyImage.color = Color.red;
-        }
+        skeleton.AnimationState.SetAnimation(0, "die", false);
 
         move = false;
         Destroy(this);
