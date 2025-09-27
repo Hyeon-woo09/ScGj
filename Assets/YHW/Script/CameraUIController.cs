@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using Scenes.MainGame;
 using Scenes.Common;
+using Scenes.Common.Scenes.Common;
 
 public class CameraUIController : MonoBehaviour
 {
@@ -15,12 +16,16 @@ public class CameraUIController : MonoBehaviour
     [SerializeField] private float moveSpeed = 100f;
     [SerializeField] private List<Collider2D> targetColliders; // 체크할 콜라이더들
 
-    [SerializeField]private GameDataManager gameDataManager; // 게임 데이터
+    [SerializeField]private ScriptableGameData gameData;
 
     private Vector2 minLimit, maxLimit;
     private bool isCapturing = false;
-    
-    
+
+
+    [SerializeField] private GameObject clear;
+    [SerializeField]private GameObject fail;
+    [SerializeField] private GameObject success;
+
 
     private void OnEnable()
     {
@@ -117,12 +122,14 @@ public class CameraUIController : MonoBehaviour
         if (allInside)
         {
             Debug.Log("모든 콜라이더가 캡쳐 화면 안에 있습니다!");
-            gameDataManager.gameData.currentPoints++;
-            gameDataManager.Save();
+            gameData.currentPoints++;
+            success.SetActive(true);
+            clear.SetActive(false);
         }
         else
         {
             Debug.Log("일부 콜라이더가 화면 밖입니다.");
+            fail.SetActive(true);
         } 
     }
 }
