@@ -2730,6 +2730,7 @@ GameObject:
   - component: {fileID: 2490711735682058671}
   - component: {fileID: 8416940594403722034}
   - component: {fileID: 7613472701494257739}
+  - component: {fileID: 8656866371274780671}
   m_Layer: 5
   m_Name: CapturedImgae
   m_TagString: Untagged
@@ -2812,6 +2813,18 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &8656866371274780671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6529164895995172033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae98f64c14df1e499113fe09f75fb41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6553924924682594160
 GameObject:
   m_ObjectHideFlags: 0
