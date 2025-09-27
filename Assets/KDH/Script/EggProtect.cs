@@ -21,6 +21,7 @@ public class EggProtect : MonoBehaviour
     public Texture2D cursorImage;
     public Texture2D cursorImageClick;
 
+    public GameObject disableButton;
     private float spawnTimer;
     private float timer = 0;
     private bool flag = true;
@@ -29,7 +30,7 @@ public class EggProtect : MonoBehaviour
     private void Start()
     {
         Cursor.SetCursor(cursorImage, Vector2.zero, CursorMode.Auto);
-
+        
         guideText.gameObject.SetActive(true);
         completePlate.gameObject.SetActive(false);
         failedPlate.gameObject.SetActive(false);
@@ -113,6 +114,7 @@ public class EggProtect : MonoBehaviour
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         Debug.Log("보상 지급");
+        disableButton.gameObject.SetActive(false);
         completePlate.gameObject.SetActive(true);
     }
 
