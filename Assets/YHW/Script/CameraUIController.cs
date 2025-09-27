@@ -19,7 +19,7 @@ public class CameraUIController : MonoBehaviour
 
     [SerializeField]private ScriptableGameData gameData;
 
-    private bool failed;
+    private bool failed = false;
 
 
     private Vector2 minLimit, maxLimit;
@@ -54,7 +54,7 @@ public class CameraUIController : MonoBehaviour
 
     void Update()
     {
-        if (isCapturing&&!failed) return;
+        if (isCapturing&&failed) return;
 
         // 마우스 위치 기준 이동
         Vector2 screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
@@ -127,13 +127,13 @@ public class CameraUIController : MonoBehaviour
             gameData.currentPoints++;
             success.SetActive(true);
             clear.SetActive(false);
-            failed = true;
+            failed = false;
         }
         else
         {
             Debug.Log("일부 콜라이더가 화면 밖입니다.");
             fail.SetActive(true);
-            failed = false;
+            failed = true;
         } 
     }
 }
