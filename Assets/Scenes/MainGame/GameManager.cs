@@ -19,10 +19,25 @@ namespace Scenes.MainGame
             gameData = FindAnyObjectByType<GameDataManager>().gameData;
         }
 
+        void Start()
+        {
+            ShowSpotSetting();
+        }
+
+        public void ShowSpotSetting()
+        {
+            foreach (var spot in gameData.spotList)
+            {
+                spot.gameObject.SetActive(gameData.currentPoints >= spot.GetComponent<ButtonOnclick>().neededPoint);
+            }
+        }
+
         public void ResetPoints()
         {
             gameDataManager.Load();
             scoreText.text = gameData.currentPoints.ToString();
         }
+        
+        
     }
 }

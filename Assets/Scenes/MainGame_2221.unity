@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d9eea9dd23aa8bc99416da33d52ab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neededPoint: 1
+  neededPoint: 2
   spotType: 0
 --- !u!1 &522407711
 GameObject:
@@ -862,7 +862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSpot: {fileID: 0}
-  gameDataManager: {fileID: 0}
+  gameDataManager: {fileID: 768023250}
   gameData:
     currentPoints: 0
     neededPointSpot: 
@@ -919,7 +919,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameData:
     currentPoints: 0
-    neededPointSpot: 0600000007000000
+    neededPointSpot: 0000000002000000
     neededPointMap: 
     clearPoint: 1000
     spotList:
@@ -1381,7 +1381,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1855768146}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45bd92dbee3e0f70696a6b583164db8c, type: 3}
+  m_Script: {fileID: 11500000, guid: 91316a5c25fccab4c9d9d0068a8772eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1911121574

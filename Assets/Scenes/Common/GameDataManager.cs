@@ -14,12 +14,13 @@ namespace Scenes.Common
         public GameData gameData = new GameData();
         string SavePath => Path.Combine(Application.persistentDataPath, "gamedata.json");
         
-        ScriptableGameData scriptableGameData;
+        ScriptableGameData _scriptableGameData;
 
         void Start()
         {
-            scriptableGameData = Resources.Load<ScriptableGameData>("ScriptableGameData");
+            _scriptableGameData = Resources.Load<ScriptableGameData>("ScriptableGameData");
             SetNeededPointToSpot();
+            SetNeededPointToMap();
         }
 
         [ContextMenu("SaveNeededPoint")]
@@ -59,7 +60,7 @@ namespace Scenes.Common
             File.WriteAllText(SavePath, json);
             Debug.Log("게임 저장 완료: " + SavePath);
 
-            scriptableGameData.currentPoints = gameData.currentPoints;
+            _scriptableGameData.currentPoints = gameData.currentPoints;
 
         }
 
@@ -77,7 +78,7 @@ namespace Scenes.Common
 
             Debug.Log("게임 불러오기 완료");
 
-            gameData.currentPoints = scriptableGameData.currentPoints;
+            gameData.currentPoints = _scriptableGameData.currentPoints;
         }
     }
 }

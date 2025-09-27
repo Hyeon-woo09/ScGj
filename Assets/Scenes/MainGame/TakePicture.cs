@@ -36,6 +36,7 @@ namespace Scenes.MainGame
             _gameManager.ResetPoints();
             _gameManager.currentSpot.SetActive(false);
             _gameManager.scoreObject.SetActive(true);
+            _gameManager.ShowSpotSetting();
             photo.SetActive(false);
         }
     }
