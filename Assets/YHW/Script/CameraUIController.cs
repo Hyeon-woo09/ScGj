@@ -5,6 +5,7 @@ using Scenes.MainGame;
 using Scenes.Common;
 using Scenes.Common.Scenes.Common;
 
+
 public class CameraUIController : MonoBehaviour
 {
     [Header("UI References")]
@@ -18,6 +19,9 @@ public class CameraUIController : MonoBehaviour
 
     [SerializeField]private ScriptableGameData gameData;
 
+    private bool failed;
+
+
     private Vector2 minLimit, maxLimit;
     private bool isCapturing = false;
 
@@ -25,6 +29,7 @@ public class CameraUIController : MonoBehaviour
     [SerializeField] private GameObject clear;
     [SerializeField]private GameObject fail;
     [SerializeField] private GameObject success;
+
 
 
     private void OnEnable()
@@ -49,7 +54,7 @@ public class CameraUIController : MonoBehaviour
 
     void Update()
     {
-        if (isCapturing) return;
+        if (isCapturing&&!failed) return;
 
         // 마우스 위치 기준 이동
         Vector2 screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
@@ -69,10 +74,7 @@ public class CameraUIController : MonoBehaviour
         {
             StartCoroutine(CaptureScreen());
         }
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            gameObject.SetActive(true);
-        }
+        
     }
 
     bool IsColliderInside(Camera cam, Collider2D col, Rect screenRect)
@@ -125,11 +127,13 @@ public class CameraUIController : MonoBehaviour
             gameData.currentPoints++;
             success.SetActive(true);
             clear.SetActive(false);
+            failed = true;
         }
         else
         {
             Debug.Log("일부 콜라이더가 화면 밖입니다.");
             fail.SetActive(true);
+            failed = false;
         } 
     }
 }
