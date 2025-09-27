@@ -29,6 +29,15 @@ public class CameraUIController : MonoBehaviour
     [SerializeField] private GameObject clear;
     [SerializeField]private GameObject fail;
     [SerializeField] private GameObject success;
+    TakePicture takePicture;
+
+    SoundManager soundManager;
+
+    private void Awake()
+    {
+        takePicture = FindAnyObjectByType<TakePicture>();
+        soundManager = GetComponent<SoundManager>();
+    }
 
 
 
@@ -73,6 +82,7 @@ public class CameraUIController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             StartCoroutine(CaptureScreen());
+            soundManager.PlaySFX(SoundManager.ESfx.SFX_CAMERA);
         }
         
     }
@@ -128,6 +138,7 @@ public class CameraUIController : MonoBehaviour
             success.SetActive(true);
             clear.SetActive(false);
             failed = true;
+            takePicture.Out();
         }
         else
         {
