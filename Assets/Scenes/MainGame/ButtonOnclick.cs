@@ -10,6 +10,8 @@ namespace Scenes.MainGame
         GameManager _gameManager;
         Button _button;
         
+        public SpotType spotType;
+        
         void Awake()
         {
             _gameManager = FindObjectOfType<GameManager>();
