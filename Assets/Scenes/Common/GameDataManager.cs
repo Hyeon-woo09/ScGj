@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Scenes.Common.Scenes.Common;
 using Scenes.MainGame;
 
 namespace Scenes.Common
@@ -12,9 +13,12 @@ namespace Scenes.Common
     {
         public GameData gameData = new GameData();
         string SavePath => Path.Combine(Application.persistentDataPath, "gamedata.json");
+        
+        ScriptableGameData scriptableGameData;
 
         void Start()
         {
+            scriptableGameData = Resources.Load<ScriptableGameData>("ScriptableGameData");
             SetNeededPointToSpot();
         }
 
@@ -54,6 +58,9 @@ namespace Scenes.Common
             string json = JsonUtility.ToJson(gameData, true);
             File.WriteAllText(SavePath, json);
             Debug.Log("게임 저장 완료: " + SavePath);
+
+            scriptableGameData.currentPoints = gameData.currentPoints;
+
         }
 
         // JSON에서 불러오기

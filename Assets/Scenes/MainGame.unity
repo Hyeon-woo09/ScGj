@@ -918,7 +918,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameData:
     currentPoints: 0
-    neededPointSpot: 0600000007000000
+    neededPointSpot: 02000000
     neededPointMap: 
     clearPoint: 1000
     spotList:
