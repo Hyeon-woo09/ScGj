@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/YHW/Script.meta
+guid: 17b923f191e50b14cb79b01a876dbc0f
+========
 guid: b298b5e3c8b12824d8e162ac97afa97a
+>>>>>>>> origin/Mk:Assets/Editor.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

@@ -1,8 +1,13 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/YHW/Script/CameraCaptureUI.cs.meta
+guid: 7c8d87b2e3de4114589c48fd518f62ed
+========
 guid: 21256c5b62f346f18640dad779911e20
 timeCreated: 1430348781
 licenseType: Store
+>>>>>>>> origin/Mk:Assets/TextMesh Pro/Examples & Extras/Scripts/TMP_TextInfoDebugTool.cs.meta
 MonoImporter:
+  externalObjects: {}
   serializedVersion: 2
   defaultReferences: []
   executionOrder: 0
