@@ -10,7 +10,7 @@ namespace Scenes.Common
         public int currentPoints = 0;
         public List<int> neededPointSpot;
         public List<int> neededPointMap;
-        public int clearPoint = 1000;
+        public int clearPoint = 10;
 
         public List<GameObject> spotList;
         public List<GameObject> mapList; 
