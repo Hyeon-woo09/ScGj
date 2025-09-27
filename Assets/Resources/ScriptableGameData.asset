@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c5cde98f2f0406e965023ae22670ad1, type: 3}
   m_Name: ScriptableGameData
   m_EditorClassIdentifier: 
-  currentPoints: 1
-  clearPoint: 10
+  currentPoints: 0
+  clearPoint: 15
