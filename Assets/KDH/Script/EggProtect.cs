@@ -107,6 +107,7 @@ public class EggProtect : MonoBehaviour
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         failed = true;
         StopAllCoroutines();
+        guideText.gameObject.SetActive(false);
         failedPlate.gameObject.SetActive(true);
     }
 
