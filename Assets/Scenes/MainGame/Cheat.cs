@@ -1,24 +1,25 @@
-using System;
+using Scenes.Common;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 namespace Scenes.MainGame
 {
-    public class ButtonOnclick : MonoBehaviour
+    public class Cheat : MonoBehaviour
     {
         GameManager _gameManager;
         Button _button;
-        public int neededPoint;
-        
-        public SpotType spotType;
+        GameData _gameData;
+        GameDataManager _gameDataManager;
         
         void Awake()
         {
             _gameManager = FindObjectOfType<GameManager>();
             _button =  GetComponent<Button>();
+            _gameDataManager = FindObjectOfType<GameDataManager>();
+            _gameData = _gameDataManager.gameData;
         }
-
+        
+        
         void Start()
         {
             _button.onClick.AddListener(OnButtonClicked);
@@ -26,7 +27,10 @@ namespace Scenes.MainGame
 
         public void OnButtonClicked()
         {
+            _gameData.currentPoints += 1;
+            _gameDataManager.Save();
             _gameManager.currentSpot = this.gameObject; 
+            _gameManager.ResetPoints();
         }
     }
 }
