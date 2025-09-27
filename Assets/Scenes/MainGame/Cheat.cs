@@ -31,6 +31,7 @@ namespace Scenes.MainGame
             _gameDataManager.Save();
             _gameManager.currentSpot = this.gameObject; 
             _gameManager.ResetPoints();
+            _gameManager.ShowSpotSetting();
         }
     }
 }
