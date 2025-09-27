@@ -64,6 +64,10 @@ public class CameraUIController : MonoBehaviour
         {
             StartCoroutine(CaptureScreen());
         }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            gameObject.SetActive(true);
+        }
     }
 
     bool IsColliderInside(Camera cam, Collider2D col, Rect screenRect)
