@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using Scenes.MainGame;
 
 public class CameraUIController : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class CameraUIController : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private float moveSpeed = 100f;
     [SerializeField] private List<Collider2D> targetColliders; // 체크할 콜라이더들
+
+    [SerializeField]private GameData gameData; // 게임 데이터
 
     private Vector2 minLimit, maxLimit;
     private bool isCapturing = false;
@@ -76,9 +79,9 @@ public class CameraUIController : MonoBehaviour
             if (c.z < 0) return false; // 카메라 뒤
             if (!screenRect.Contains(c)) return false;
         }
-        return true;
+          return true;
     }
-
+  
     private System.Collections.IEnumerator CaptureScreen()
     {
         isCapturing = true;
@@ -107,6 +110,7 @@ public class CameraUIController : MonoBehaviour
         if (allInside)
         {
             Debug.Log("모든 콜라이더가 캡쳐 화면 안에 있습니다!");
+            gameData.currentPoints++;
         }
         else
         {
