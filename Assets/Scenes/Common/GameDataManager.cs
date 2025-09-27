@@ -76,6 +76,8 @@ namespace Scenes.Common
             gameData = JsonUtility.FromJson<GameData>(json);
 
             Debug.Log("게임 불러오기 완료");
+
+            gameData.currentPoints = scriptableGameData.currentPoints;
         }
     }
 }
