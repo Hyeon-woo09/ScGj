@@ -14,6 +14,7 @@ public class ReedPlant : MonoBehaviour
     public Texture2D cursorImageClick;
     public TMP_Text guideText;
 
+    public GameObject disableButton;
     private SkeletonGraphic reedSkeleton;
     private int reedCount = 0;
 
@@ -57,6 +58,7 @@ public class ReedPlant : MonoBehaviour
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         Debug.Log("보상 지급");
+        disableButton.gameObject.SetActive(false);
         completePlate.gameObject.SetActive(true);
     }
 

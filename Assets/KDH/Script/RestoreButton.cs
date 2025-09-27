@@ -17,6 +17,14 @@ public class RestoreButton : MonoBehaviour
 
     public void OnClick()
     {
-        Instantiate(MiniGamePrefabs[(int)playMiniGame], transform.parent);
+        GameObject game = Instantiate(MiniGamePrefabs[(int)playMiniGame], transform.parent);
+        if (playMiniGame == MiniGames.ReedPlant)
+        {
+            game.GetComponent<ReedPlant>().disableButton = gameObject;
+        }
+        else if (playMiniGame == MiniGames.EggProtect)
+        {
+            game.GetComponent<EggProtect>().disableButton = gameObject;
+        }
     }
 }
