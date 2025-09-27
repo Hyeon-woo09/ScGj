@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using Scenes.MainGame;
+using Scenes.Common;
 
 public class CameraUIController : MonoBehaviour
 {
