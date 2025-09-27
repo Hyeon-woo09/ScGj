@@ -9,11 +9,9 @@ namespace Scenes.MainGame
     {
         public ScriptableGameData scriptableGameData; // Inspector에서 드래그하거나 Resources에서 로드 가능
         Image _image;
-        GameData _gameData;
 
         void Awake()
         {
-            _gameData = FindAnyObjectByType<GameDataManager>().gameData;
             _image = GetComponent<Image>();
             
             if (scriptableGameData == null)
