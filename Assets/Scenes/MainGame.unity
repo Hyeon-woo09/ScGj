@@ -367,8 +367,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d9eea9dd23aa8bc99416da33d52ab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neededPoint: 7
-  spotType: 0
 --- !u!1 &522407711
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,8 +571,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 98ddabe1f4a5054448aa13086c6d1dc3, type: 2}
-  m_sharedMaterial: {fileID: 21990264018669758, guid: 98ddabe1f4a5054448aa13086c6d1dc3, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -862,14 +860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSpot: {fileID: 0}
-  gameData:
-    currentPoints: 0
-    neededPointSpot: 
-    neededPointMap: 
-    clearPoint: 1000
-    spotList: []
-    mapList: []
-    clearList: []
+  gameData: {fileID: 0}
   scoreText: {fileID: 595252940}
   scoreObject: {fileID: 1855768146}
 --- !u!1 &768023247
@@ -1319,14 +1310,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   photo: {fileID: 8840532090532738342}
-  gameData:
-    currentPoints: 0
-    neededPointSpot: 
-    neededPointMap: 
-    clearPoint: 1000
-    spotList: []
-    mapList: []
-    clearList: []
 --- !u!114 &1855768149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3877,8 +3860,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d9eea9dd23aa8bc99416da33d52ab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neededPoint: 6
-  spotType: 1
 --- !u!1 &3917647779109171456
 GameObject:
   m_ObjectHideFlags: 0
