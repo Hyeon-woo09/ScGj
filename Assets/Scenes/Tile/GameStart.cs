@@ -11,7 +11,7 @@ namespace Scenes.Tile
 
         void Awake()
         {
-            _button = gameObject.GetComponent<Button>();
+            _button = GetComponent<Button>();
         }
 
         void Start()
