@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using System.Collections;
 
 public class WaterwayRestore : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class WaterwayRestore : MonoBehaviour
     public GameObject dragEffectPrefab;
     public GameObject guideLine;
     public Image completePlate;
+    public GameObject pos;
+    public GameObject reverEfect;
 
     public List<RectTransform> allNodes;
 
@@ -19,20 +22,26 @@ public class WaterwayRestore : MonoBehaviour
     private RectTransform startNode;
     private GameObject currentLine;
     private GameObject currentDragEffect;
+    public Texture2D cursorImage;
+    private bool end = false;
 
+    public GameObject guideText;
     private GraphicRaycaster graphicRaycaster;
     private PointerEventData pointerEventData;
 
     void Start()
     {
+        Cursor.SetCursor(cursorImage, Vector2.zero, CursorMode.Auto);
         canvasRectTransform = transform.parent.GetComponent<RectTransform>();
         graphicRaycaster = canvasRectTransform.GetComponentInParent<GraphicRaycaster>();
         pointerEventData = new PointerEventData(EventSystem.current);
+        guideText.gameObject.SetActive(true);
+        reverEfect.gameObject.SetActive(false);
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !end)
         {
             startNode = GetNodeUnderMouse();
             if (startNode != null)
@@ -54,7 +63,7 @@ public class WaterwayRestore : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && !end)
         {
             if (isDrawing)
             {
@@ -90,12 +99,13 @@ public class WaterwayRestore : MonoBehaviour
 
     void StartDrawingLine(RectTransform startNodeRect)
     {
+        guideText.gameObject.SetActive(false);
         guideLine.SetActive(false);
         isDrawing = true;
         startNode = startNodeRect;
         startPos = startNodeRect.anchoredPosition;
 
-        currentLine = Instantiate(linePrefab, canvasRectTransform);
+        currentLine = Instantiate(linePrefab, pos.transform);
         currentLine.GetComponent<Image>().raycastTarget = false;
         currentLine.SetActive(true);
 
@@ -117,10 +127,6 @@ public class WaterwayRestore : MonoBehaviour
         isDrawing = false;
         startNode = null;
 
-        if (currentLine != null)
-        {
-            Destroy(currentLine);
-        }
         if (currentDragEffect != null)
         {
             Destroy(currentDragEffect);
@@ -133,7 +139,7 @@ public class WaterwayRestore : MonoBehaviour
         RectTransform rectTransform = lineObj.GetComponent<RectTransform>();
         Vector2 direction = (end - start).normalized;
         float distance = Vector2.Distance(start, end);
-        rectTransform.sizeDelta = new Vector2(distance, 50f);
+        rectTransform.sizeDelta = new Vector2(distance, 300f);
         rectTransform.anchoredPosition = start + direction * distance * 0.5f;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         rectTransform.rotation = Quaternion.Euler(0, 0, angle);
@@ -141,13 +147,20 @@ public class WaterwayRestore : MonoBehaviour
 
     void Complete()
     {
-        Destroy(currentLine);
+        end = true;
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         Debug.Log("보상 지급");
+        allNodes = null;
+        reverEfect.SetActive(true);
         disableButton.gameObject.SetActive(false);
-        completePlate.gameObject.SetActive(true);
+        StartCoroutine(EfectWating());
     }
 
+    IEnumerator EfectWating()
+    {
+        yield return new WaitForSeconds(2);
+        completePlate.gameObject.SetActive(true);
+    }
     public void Return()
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
