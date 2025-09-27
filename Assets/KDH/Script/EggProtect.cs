@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Spine.Unity;
+using static UnityEngine.GraphicsBuffer;
+using TMPro;
 
 public class EggProtect : MonoBehaviour
 {
@@ -11,9 +14,12 @@ public class EggProtect : MonoBehaviour
 
     public Scrollbar timeScroll;
     public GameObject enemyparent;
-    public Image enemyPrefab;
+    public GameObject enemyPrefab;
     public Image completePlate;
     public Image failedPlate;
+    public TMP_Text guideText;
+    public Texture2D cursorImage;
+    public Texture2D cursorImageClick;
 
     private float spawnTimer;
     private float timer = 0;
@@ -22,6 +28,9 @@ public class EggProtect : MonoBehaviour
 
     private void Start()
     {
+        Cursor.SetCursor(cursorImage, Vector2.zero, CursorMode.Auto);
+
+        guideText.gameObject.SetActive(true);
         completePlate.gameObject.SetActive(false);
         failedPlate.gameObject.SetActive(false);
         spawnTimer = enemySpawnTime;
@@ -39,6 +48,17 @@ public class EggProtect : MonoBehaviour
                 SpawnEnemy();
                 spawnTimer += enemySpawnTime;
             }
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                guideText.gameObject.SetActive(false);
+                Cursor.SetCursor(cursorImageClick, Vector2.zero, CursorMode.Auto);
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                Cursor.SetCursor(cursorImage, Vector2.zero, CursorMode.Auto);
+            }
         }
         else
         {
@@ -49,6 +69,7 @@ public class EggProtect : MonoBehaviour
                 flag = false;
             }
         }
+
     }
 
     void SpawnEnemy()
@@ -72,13 +93,17 @@ public class EggProtect : MonoBehaviour
             spawnPosy = Random.Range(-350f, 100f);
         }
 
-        Image enemy = Instantiate(enemyPrefab, enemyparent.transform);
+        GameObject enemy = Instantiate(enemyPrefab, enemyparent.transform);
         enemy.GetComponent<RectTransform>().anchoredPosition = new Vector2(spawnPosx, spawnPosy);
+        Vector2 newPos = Vector2.zero - enemy.GetComponent<RectTransform>().anchoredPosition;
+        float rotZ = Mathf.Atan2(newPos.y, newPos.x) * Mathf.Rad2Deg;
+        enemy.transform.rotation = Quaternion.Euler(0, 0, rotZ - 90);
         StartCoroutine(enemy.GetComponent<EggProtect_Enemy>().EggTracking(enemyMoveTime, this));
     }
 
     public void Failed()
     {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         failed = true;
         StopAllCoroutines();
         failedPlate.gameObject.SetActive(true);
@@ -86,12 +111,14 @@ public class EggProtect : MonoBehaviour
 
     void Complete()
     {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         Debug.Log("보상 지급");
         completePlate.gameObject.SetActive(true);
     }
 
     public void Return()
     {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         Destroy(gameObject);
     }
 }
