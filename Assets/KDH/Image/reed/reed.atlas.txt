@@ -1,0 +1,7 @@
+reed.png
+size:1024,2048
+filter:Linear,Linear
+pma:true
+reed_spine
+bounds:2,2,571,1700
+offsets:468,0,1500,1700
