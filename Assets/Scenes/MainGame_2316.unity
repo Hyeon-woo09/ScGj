@@ -5796,7 +5796,7 @@ MonoBehaviour:
     currentPoints: 0
     neededPointSpot: 000000000100000002000000030000000400000005000000060000000700000002000000020000000400000004000000050000000600000006000000080000000a000000
     neededPointMap: 
-    clearPoint: 1000
+    clearPoint: 10
     spotList:
     - {fileID: 267297293}
     - {fileID: 1841667920}
@@ -11867,6 +11867,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1520093242}
   m_CullTransparentMesh: 1
+--- !u!1 &1539172916 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1613908175638335303, guid: 4edb523a50910ab4a8fa563e8c6c4570, type: 3}
+  m_PrefabInstance: {fileID: 5624580084936732995}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1539172920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539172916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 052bc2c0012a40719c12c1997d7c647f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableGameData: {fileID: 0}
 --- !u!1 &1539631612
 GameObject:
   m_ObjectHideFlags: 0
@@ -16107,7 +16125,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1613908175638335303, guid: 4edb523a50910ab4a8fa563e8c6c4570, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1539172920}
   m_SourcePrefab: {fileID: 100100000, guid: 4edb523a50910ab4a8fa563e8c6c4570, type: 3}
 --- !u!224 &5624580084936732996 stripped
 RectTransform:

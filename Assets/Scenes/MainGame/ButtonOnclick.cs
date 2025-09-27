@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 namespace Scenes.MainGame
 {
     public class ButtonOnclick : MonoBehaviour
