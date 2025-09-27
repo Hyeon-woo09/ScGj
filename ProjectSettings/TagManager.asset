@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Pan
+    uniqueID: 3179893557
+    locked: 0
   - name: Efx
     uniqueID: 4183737927
     locked: 0
