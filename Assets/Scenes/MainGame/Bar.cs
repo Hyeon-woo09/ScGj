@@ -7,8 +7,9 @@ namespace Scenes.MainGame
 {
     public class Bar : MonoBehaviour
     {
-        public ScriptableGameData scriptableGameData; // Inspector에서 드래그하거나 Resources에서 로드 가능
+        public ScriptableGameData scriptableGameData; 
         Image _image;
+        float BarArcSize => 15f;
 
         void Awake()
         {
@@ -34,7 +35,7 @@ namespace Scenes.MainGame
         public void UpdateBar()
         {
             if (scriptableGameData == null) return;
-            _image.fillAmount = Mathf.Clamp01(scriptableGameData.currentPoints / 10f);
+            _image.fillAmount = Mathf.Clamp01(scriptableGameData.currentPoints / BarArcSize);
         }
     }
 }
