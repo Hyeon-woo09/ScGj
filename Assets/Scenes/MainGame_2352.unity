@@ -537,6 +537,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "Pan_Photo_003_\uC7AC\uB450\uB8E8\uBBF8"
       objectReference: {fileID: 0}
+    - target: {fileID: 3181801411336369887, guid: 907221a48eebb5243ae949b37bb9403e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5121066935014503371, guid: 907221a48eebb5243ae949b37bb9403e, type: 3}
       propertyPath: clear
       value: 
@@ -1530,6 +1534,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pan_Photo_001 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 3181801411336369887, guid: 907221a48eebb5243ae949b37bb9403e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5121066935014503371, guid: 907221a48eebb5243ae949b37bb9403e, type: 3}
       propertyPath: clear
       value: 
@@ -2084,6 +2092,10 @@ PrefabInstance:
     - target: {fileID: 3181801411336369887, guid: 907221a48eebb5243ae949b37bb9403e, type: 3}
       propertyPath: m_Name
       value: Pan_Photo_001 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3181801411336369887, guid: 907221a48eebb5243ae949b37bb9403e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5121066935014503371, guid: 907221a48eebb5243ae949b37bb9403e, type: 3}
       propertyPath: clear
@@ -2764,6 +2776,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pan_Photo_001 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3181801411336369887, guid: 907221a48eebb5243ae949b37bb9403e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5121066935014503371, guid: 907221a48eebb5243ae949b37bb9403e, type: 3}
       propertyPath: clear
       value: 
@@ -3007,6 +3023,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pan_Photo_001 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3181801411336369887, guid: 907221a48eebb5243ae949b37bb9403e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5121066935014503371, guid: 907221a48eebb5243ae949b37bb9403e, type: 3}
       propertyPath: clear
       value: 
@@ -3174,6 +3194,10 @@ PrefabInstance:
     - target: {fileID: 3181801411336369887, guid: 907221a48eebb5243ae949b37bb9403e, type: 3}
       propertyPath: m_Name
       value: Pan_Photo_001 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3181801411336369887, guid: 907221a48eebb5243ae949b37bb9403e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5121066935014503371, guid: 907221a48eebb5243ae949b37bb9403e, type: 3}
       propertyPath: clear
@@ -3509,6 +3533,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pan_Photo_001 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 3181801411336369887, guid: 907221a48eebb5243ae949b37bb9403e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5121066935014503371, guid: 907221a48eebb5243ae949b37bb9403e, type: 3}
       propertyPath: clear
       value: 
@@ -3767,6 +3795,10 @@ PrefabInstance:
     - target: {fileID: 3181801411336369887, guid: 907221a48eebb5243ae949b37bb9403e, type: 3}
       propertyPath: m_Name
       value: "Pan_Photo_002_\uAC80\uC740\uBAA9\uB450\uB8E8\uBBF8"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3181801411336369887, guid: 907221a48eebb5243ae949b37bb9403e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5121066935014503371, guid: 907221a48eebb5243ae949b37bb9403e, type: 3}
       propertyPath: clear
@@ -4205,6 +4237,10 @@ PrefabInstance:
     - target: {fileID: 3181801411336369887, guid: 907221a48eebb5243ae949b37bb9403e, type: 3}
       propertyPath: m_Name
       value: Pan_Photo_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 3181801411336369887, guid: 907221a48eebb5243ae949b37bb9403e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5121066935014503371, guid: 907221a48eebb5243ae949b37bb9403e, type: 3}
       propertyPath: clear
