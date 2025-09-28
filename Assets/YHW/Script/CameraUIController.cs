@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿
+
+
+
+ 
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using Scenes.MainGame;
@@ -81,6 +86,7 @@ public class CameraUIController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             StartCoroutine(CaptureScreen());
+            
             audioSource.Play();
         }
         
@@ -137,7 +143,7 @@ public class CameraUIController : MonoBehaviour
             success.SetActive(true);
             clear.SetActive(false);
             failed = true;
-            takePicture.Out();
+            //takePicture.Out();
         }
         else
         {

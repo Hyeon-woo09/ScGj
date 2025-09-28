@@ -30,7 +30,7 @@ namespace Scenes.Tile
                 scriptableGameData.currentPoints = 0;
             }
             
-            SceneManager.LoadScene("MainGame_0512"); 
+            SceneManager.LoadScene("MainGame"); 
         }
     }
 }
