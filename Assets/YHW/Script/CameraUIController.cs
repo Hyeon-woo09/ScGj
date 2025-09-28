@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using Scenes.MainGame;
@@ -9,13 +9,13 @@ using Scenes.Common.Scenes.Common;
 public class CameraUIController : MonoBehaviour
 {
     [Header("UI References")]
-    [SerializeField]private RectTransform bigImage;       // Å« ÀÌ¹ÌÁö (¹è°æ)
-    [SerializeField]private RawImage capturePreview;      // Ä¸ÃÄ °á°ú Ç¥½Ã¿ë
-    [SerializeField] private Camera mainCam;               // ½ÇÁ¦ ¿ùµå È®ÀÎÇÒ Ä«¸Ş¶ó
+    [SerializeField]private RectTransform bigImage;       // í° ì´ë¯¸ì§€ (ë°°ê²½)
+    [SerializeField]private RawImage capturePreview;      // ìº¡ì³ ê²°ê³¼ í‘œì‹œìš©
+    [SerializeField] private Camera mainCam;               // ì‹¤ì œ ì›”ë“œ í™•ì¸í•  ì¹´ë©”ë¼
 
     [Header("Settings")]
     [SerializeField] private float moveSpeed = 100f;
-    [SerializeField] private List<Collider2D> targetColliders; // Ã¼Å©ÇÒ Äİ¶óÀÌ´õµé
+    [SerializeField] private List<Collider2D> targetColliders; // ì²´í¬í•  ì½œë¼ì´ë”ë“¤
 
     [SerializeField]private ScriptableGameData gameData;
 
@@ -25,23 +25,31 @@ public class CameraUIController : MonoBehaviour
     private Vector2 minLimit, maxLimit;
     private bool isCapturing = false;
 
+    [SerializeField]AudioSource audioSource;
 
     [SerializeField] private GameObject clear;
     [SerializeField]private GameObject fail;
     [SerializeField] private GameObject success;
+    TakePicture takePicture;
+
+
+    private void Awake()
+    {
+        takePicture = FindAnyObjectByType<TakePicture>();
+    }
 
 
 
     private void OnEnable()
     {
-        // UI ½ÃÀÛ ½Ã ·£´ı À§Ä¡
+        // UI ì‹œì‘ ì‹œ ëœë¤ ìœ„ì¹˜
         Vector2 randomPos = new Vector2(
             Random.Range(-200f, 200f),
             Random.Range(-200f, 200f)
         );
         bigImage.anchoredPosition = randomPos;
 
-        // ¸®¹ÌÆ® °è»ê (ºÎ¸ğ Äµ¹ö½º Å©±â ±âÁØ)
+        // ë¦¬ë¯¸íŠ¸ ê³„ì‚° (ë¶€ëª¨ ìº”ë²„ìŠ¤ í¬ê¸° ê¸°ì¤€)
         RectTransform parent = bigImage.parent as RectTransform;
         Vector2 parentSize = parent.rect.size;
         Vector2 imageSize = bigImage.rect.size;
@@ -56,23 +64,24 @@ public class CameraUIController : MonoBehaviour
     {
         if (isCapturing&&failed) return;
 
-        // ¸¶¿ì½º À§Ä¡ ±âÁØ ÀÌµ¿
+        // ë§ˆìš°ìŠ¤ ìœ„ì¹˜ ê¸°ì¤€ ì´ë™
         Vector2 screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
         Vector2 mouseDir = (Vector2)Input.mousePosition - screenCenter;
         Vector2 moveDir = -mouseDir.normalized;
 
         bigImage.anchoredPosition += moveDir * moveSpeed * Time.deltaTime;
 
-        // ¸®¹ÌÆ® Clamp
+        // ë¦¬ë¯¸íŠ¸ Clamp
         bigImage.anchoredPosition = new Vector2(
             Mathf.Clamp(bigImage.anchoredPosition.x, minLimit.x, maxLimit.x),
             Mathf.Clamp(bigImage.anchoredPosition.y, minLimit.y, maxLimit.y)
         );
 
-        // ½ºÆäÀÌ½º ÀÔ·Â ¡æ Ä¸ÃÄ
+        // ìŠ¤í˜ì´ìŠ¤ ì…ë ¥ â†’ ìº¡ì³
         if (Input.GetKeyDown(KeyCode.Space))
         {
             StartCoroutine(CaptureScreen());
+            audioSource.Play();
         }
         
     }
@@ -81,7 +90,7 @@ public class CameraUIController : MonoBehaviour
     {
         Bounds b = col.bounds;
 
-        // BoundsÀÇ 8°³ ²ÀÁşÁ¡ ´ë½Å 2D´Ï±î 4°³ ÄÚ³Ê¸¸ °Ë»ç
+        // Boundsì˜ 8ê°œ ê¼­ì§“ì  ëŒ€ì‹  2Dë‹ˆê¹Œ 4ê°œ ì½”ë„ˆë§Œ ê²€ì‚¬
         Vector3[] corners = new Vector3[4];
         corners[0] = cam.WorldToScreenPoint(new Vector3(b.min.x, b.min.y, col.transform.position.z));
         corners[1] = cam.WorldToScreenPoint(new Vector3(b.min.x, b.max.y, col.transform.position.z));
@@ -90,7 +99,7 @@ public class CameraUIController : MonoBehaviour
 
         foreach (var c in corners)
         {
-            if (c.z < 0) return false; // Ä«¸Ş¶ó µÚ
+            if (c.z < 0) return false; // ì¹´ë©”ë¼ ë’¤
             if (!screenRect.Contains(c)) return false;
         }
           return true;
@@ -101,14 +110,14 @@ public class CameraUIController : MonoBehaviour
         isCapturing = true;
         yield return new WaitForEndOfFrame();
 
-        // È­¸é ÀüÃ¼ Ä¸ÃÄ
+        // í™”ë©´ ì „ì²´ ìº¡ì³
         Texture2D tex = ScreenCapture.CaptureScreenshotAsTexture();
 
-        // Ä¸ÃÄ °á°ú UI È°¼ºÈ­ + ÀÌ¹ÌÁö ³Ö±â
+        // ìº¡ì³ ê²°ê³¼ UI í™œì„±í™” + ì´ë¯¸ì§€ ë„£ê¸°
         capturePreview.texture = tex;
         capturePreview.gameObject.SetActive(true);
 
-        // Ä¸ÃÄµÈ È­¸é ³» Äİ¶óÀÌ´õ È®ÀÎ
+        // ìº¡ì³ëœ í™”ë©´ ë‚´ ì½œë¼ì´ë” í™•ì¸
         Rect screenRect = new Rect(0, 0, Screen.width, Screen.height);
         bool allInside = true;
 
@@ -123,15 +132,16 @@ public class CameraUIController : MonoBehaviour
         }
         if (allInside)
         {
-            Debug.Log("¸ğµç Äİ¶óÀÌ´õ°¡ Ä¸ÃÄ È­¸é ¾È¿¡ ÀÖ½À´Ï´Ù!");
+            Debug.Log("ëª¨ë“  ì½œë¼ì´ë”ê°€ ìº¡ì³ í™”ë©´ ì•ˆì— ìˆìŠµë‹ˆë‹¤!");
             gameData.currentPoints++;
             success.SetActive(true);
             clear.SetActive(false);
             failed = true;
+            takePicture.Out();
         }
         else
         {
-            Debug.Log("ÀÏºÎ Äİ¶óÀÌ´õ°¡ È­¸é ¹ÛÀÔ´Ï´Ù.");
+            Debug.Log("ì¼ë¶€ ì½œë¼ì´ë”ê°€ í™”ë©´ ë°–ì…ë‹ˆë‹¤.");
             fail.SetActive(true);
             failed = false;
         } 

@@ -11,8 +11,6 @@ namespace Scenes.MainGame
         GameDataManager _gameDataManager;
         public GameObject photo;
         public GameData gameData;
-        bool condition = true;
-        
 
         void Awake()
         {
@@ -23,12 +21,9 @@ namespace Scenes.MainGame
         
         public void CheckPoint()
         {
-            if (condition)
-            {
-                _gameData.currentPoints += 1;
-                _gameDataManager.Save();
-                Out();
-            }
+            _gameData.currentPoints += 1;
+            _gameDataManager.Save();
+            Out();
         }
 
         public void Out()
@@ -37,7 +32,6 @@ namespace Scenes.MainGame
             _gameManager.currentSpot.SetActive(false);
             _gameManager.scoreObject.SetActive(true);
             _gameManager.ShowSpotSetting();
-            photo.SetActive(false);
         }
     }
 }

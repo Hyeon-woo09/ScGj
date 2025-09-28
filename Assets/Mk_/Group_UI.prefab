@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 6222359953671995915}
   - component: {fileID: 1943806600172893886}
   - component: {fileID: 6888299299987855957}
+  - component: {fileID: 6660897445051878054}
   m_Layer: 5
   m_Name: Bar
   m_TagString: Untagged
@@ -150,6 +151,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6660897445051878054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703549434057355765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 052bc2c0012a40719c12c1997d7c647f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptableGameData: {fileID: 11400000, guid: 27a89c5c804825bb2b45836ccb0df4d2, type: 2}
 --- !u!1 &936718147305608663
 GameObject:
   m_ObjectHideFlags: 0
@@ -6416,7 +6430,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -111229369
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 100
   m_RenderMode: 0
   m_MeshDistribution: 0

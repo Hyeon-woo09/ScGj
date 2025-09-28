@@ -1,4 +1,5 @@
 using System;
+using Scenes.Common.Scenes.Common;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,10 +9,11 @@ namespace Scenes.Tile
     public class GameStart : MonoBehaviour
     {
         Button _button;
+        public ScriptableGameData scriptableGameData;
 
         void Awake()
         {
-            _button = gameObject.GetComponent<Button>();
+            _button = GetComponent<Button>();
         }
 
         void Start()
@@ -21,8 +23,14 @@ namespace Scenes.Tile
 
         public void LoadScene()
         {
-            SceneManager.LoadScene("MainGame"); 
+            print(scriptableGameData.currentPoints);
+            
+            if (scriptableGameData != null)
+            {
+                scriptableGameData.currentPoints = 0;
+            }
+            
+            SceneManager.LoadScene("MainGame_0512"); 
         }
-        
     }
 }

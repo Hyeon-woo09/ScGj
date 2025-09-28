@@ -10,6 +10,7 @@ namespace Scenes.MainGame
         Button _button;
         GameData _gameData;
         GameDataManager _gameDataManager;
+        public Bar _bar;
         
         void Awake()
         {
@@ -17,6 +18,7 @@ namespace Scenes.MainGame
             _button =  GetComponent<Button>();
             _gameDataManager = FindObjectOfType<GameDataManager>();
             _gameData = _gameDataManager.gameData;
+            _bar = FindAnyObjectByType<Bar>();
         }
         
         
@@ -32,6 +34,8 @@ namespace Scenes.MainGame
             _gameManager.currentSpot = this.gameObject; 
             _gameManager.ResetPoints();
             _gameManager.ShowSpotSetting();
+            print(_bar.name);
+            _bar.UpdateBar();
         }
     }
 }

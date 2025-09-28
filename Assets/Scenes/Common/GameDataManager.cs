@@ -56,10 +56,7 @@ namespace Scenes.Common
         // JSON으로 저장
         public void Save()
         {
-            string json = JsonUtility.ToJson(gameData, true);
-            File.WriteAllText(SavePath, json);
-            Debug.Log("게임 저장 완료: " + SavePath);
-
+            print("게임 저장 완료");
             _scriptableGameData.currentPoints = gameData.currentPoints;
 
         }
@@ -67,16 +64,7 @@ namespace Scenes.Common
         // JSON에서 불러오기
         public void Load()
         {
-            if (!File.Exists(SavePath))
-            {
-                Debug.LogWarning("세이브 파일 없음");
-                return;
-            }
-
-            string json = File.ReadAllText(SavePath);
-            gameData = JsonUtility.FromJson<GameData>(json);
-
-            Debug.Log("게임 불러오기 완료");
+            print("게임 불러오기 완료");
 
             gameData.currentPoints = _scriptableGameData.currentPoints;
         }
