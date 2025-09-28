@@ -9,6 +9,8 @@ using UnityEngine.UI;
 public class CrabRace : MonoBehaviour
 {
     public GameObject[] crabs;
+    public float crabMaxSize;
+    public float crabMinSize;
     private float[] crabSpeeds;
     public TMP_Text countText;
     private int arriveCount;
@@ -16,12 +18,9 @@ public class CrabRace : MonoBehaviour
 
     public Image completePlate;
     public Texture2D cursorImage;
-    public Texture2D cursorImageClick;
     public TMP_Text guideText;
 
     public GameObject disableButton;
-    private SkeletonGraphic checkSkeleton;
-    private int checkCount = 0;
 
     private void Start()
     {
@@ -41,6 +40,7 @@ public class CrabRace : MonoBehaviour
         Debug.Log(arriveCount);
         if (arriveCount == crabs.Length)
         {
+            Cursor.SetCursor(cursorImage, Vector2.zero, CursorMode.Auto);
             guideText.text = "1등을 골라주세요.";
         }    
     }
@@ -69,7 +69,7 @@ public class CrabRace : MonoBehaviour
             crabSpeeds[k] = temp;
             crabSpeeds[i] += 3;
 
-            crabs[i].GetComponent<RectTransform>().localScale = Vector3.one * Random.Range(0.8f, 1f);
+            crabs[i].GetComponent<RectTransform>().localScale = Vector3.one * Random.Range(crabMinSize, crabMaxSize);
         }
     }
 
@@ -81,6 +81,7 @@ public class CrabRace : MonoBehaviour
             {
                 firstArrive = i;
             }
+            crabs[i].GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "run", true);
             StartCoroutine(MoveCoroutine(crabs[i].GetComponent<RectTransform>(), crabSpeeds[i], crabs[i].GetComponent<RectTransform>().anchoredPosition));
         }
     }
@@ -94,6 +95,7 @@ public class CrabRace : MonoBehaviour
             rt.anchoredPosition = Vector2.Lerp(startPos, new Vector2(startPos.x + 900, startPos.y), mt / t);
             yield return null;
         }
+        rt.GetComponent<SkeletonGraphic>().AnimationState.SetAnimation(0, "idle", true);
         arriveCount += 1;
     }
 
