@@ -1,3 +1,4 @@
+using Scenes.Common.Scenes.Common;
 using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ public class FindGoby : MonoBehaviour
     public GameObject disableButton;
     private SkeletonGraphic checkSkeleton;
     private int checkCount = 0;
+    [SerializeField] private ScriptableGameData gameData;
 
     private void Start()
     {
@@ -45,6 +47,8 @@ public class FindGoby : MonoBehaviour
         Debug.Log("보상 지급");
         disableButton.gameObject.SetActive(false);
         completePlate.gameObject.SetActive(true);
+
+        gameData.currentPoints++;
     }
 
     public void Return()

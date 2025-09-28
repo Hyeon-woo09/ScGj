@@ -902,6 +902,7 @@ MonoBehaviour:
   cursorImage: {fileID: 2800000, guid: 0bd97d16eff48384c83074a8ce932a45, type: 3}
   cursorImageClick: {fileID: 2800000, guid: 07a3dfd7eb4f64b41bf2ca2db8f16e1d, type: 3}
   disableButton: {fileID: 0}
+  gameData: {fileID: 11400000, guid: 27a89c5c804825bb2b45836ccb0df4d2, type: 2}
 --- !u!1 &5243807781005550226
 GameObject:
   m_ObjectHideFlags: 0
@@ -1385,7 +1386,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 165, y: 0}
+  m_AnchoredPosition: {x: -253, y: -2}
   m_SizeDelta: {x: 143.5575, y: 143.5575}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1335177199855197582
@@ -1571,8 +1572,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -40, y: 259}
-  m_SizeDelta: {x: 274.0493, y: 40}
+  m_AnchoredPosition: {x: 46, y: 259}
+  m_SizeDelta: {x: 413.33, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1102528158954378515
 CanvasRenderer:
@@ -1673,6 +1674,7 @@ GameObject:
   - component: {fileID: 7416224633916559594}
   - component: {fileID: 329821735130889034}
   - component: {fileID: 6500222396318660664}
+  - component: {fileID: 2311962168218775753}
   m_Layer: 5
   m_Name: ReturnButton
   m_TagString: Untagged
@@ -1794,6 +1796,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2311962168218775753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7223255141411456619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e06d08fc92ddea42b745ea77099719e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8614556670883057590
 GameObject:
   m_ObjectHideFlags: 0

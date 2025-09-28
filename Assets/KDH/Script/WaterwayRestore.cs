@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using System.Collections;
+using Scenes.Common.Scenes.Common;
 
 public class WaterwayRestore : MonoBehaviour
 {
@@ -144,6 +145,7 @@ public class WaterwayRestore : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         rectTransform.rotation = Quaternion.Euler(0, 0, angle);
     }
+    [SerializeField] private ScriptableGameData gameData;
 
     void Complete()
     {
@@ -154,6 +156,8 @@ public class WaterwayRestore : MonoBehaviour
         reverEfect.SetActive(true);
         disableButton.gameObject.SetActive(false);
         StartCoroutine(EfectWating());
+
+        gameData.currentPoints++;
     }
 
     IEnumerator EfectWating()

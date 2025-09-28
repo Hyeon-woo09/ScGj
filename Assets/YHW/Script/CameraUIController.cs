@@ -35,13 +35,8 @@ public class CameraUIController : MonoBehaviour
     [SerializeField] private GameObject clear;
     [SerializeField]private GameObject fail;
     [SerializeField] private GameObject success;
-    TakePicture takePicture;
 
 
-    private void Awake()
-    {
-        takePicture = FindAnyObjectByType<TakePicture>();
-    }
 
 
 

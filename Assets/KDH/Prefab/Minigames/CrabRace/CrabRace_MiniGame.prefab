@@ -109,6 +109,7 @@ MonoBehaviour:
   cursorImage: {fileID: 2800000, guid: 2c93228631bd0d34fa976d597109914d, type: 3}
   guideText: {fileID: 8471063824792541288}
   disableButton: {fileID: 0}
+  gameData: {fileID: 11400000, guid: 27a89c5c804825bb2b45836ccb0df4d2, type: 2}
 --- !u!1 &1601289108202261540
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,6 +586,7 @@ GameObject:
   - component: {fileID: 5394493711942451515}
   - component: {fileID: 654714591295323548}
   - component: {fileID: 1236451462933833802}
+  - component: {fileID: 1947096387723577827}
   m_Layer: 5
   m_Name: CompleteButton
   m_TagString: Untagged
@@ -706,6 +708,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1947096387723577827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3553711603482547136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e06d08fc92ddea42b745ea77099719e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4202730893003925065
 GameObject:
   m_ObjectHideFlags: 0

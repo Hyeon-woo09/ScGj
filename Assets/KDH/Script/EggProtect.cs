@@ -1,10 +1,11 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Spine.Unity;
 using static UnityEngine.GraphicsBuffer;
 using TMPro;
+using Scenes.Common.Scenes.Common;
 
 public class EggProtect : MonoBehaviour
 {
@@ -26,6 +27,9 @@ public class EggProtect : MonoBehaviour
     private float timer = 0;
     private bool flag = true;
     private bool failed = false;
+
+    [SerializeField] private ScriptableGameData gameData;
+
 
     private void Start()
     {
@@ -114,9 +118,11 @@ public class EggProtect : MonoBehaviour
     void Complete()
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-        Debug.Log("∫∏ªÛ ¡ˆ±ﬁ");
+        Debug.Log("Î≥¥ÏÉÅ ÏßÄÍ∏â");
         disableButton.gameObject.SetActive(false);
         completePlate.gameObject.SetActive(true);
+
+        gameData.currentPoints++;
     }
 
     public void Return()

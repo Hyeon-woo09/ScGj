@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Spine.Unity;
+using Scenes.Common.Scenes.Common;
 
 public class ReedPlant : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class ReedPlant : MonoBehaviour
     public GameObject disableButton;
     private SkeletonGraphic reedSkeleton;
     private int reedCount = 0;
+
+    [SerializeField] private ScriptableGameData gameData;
 
     private void Start()
     {
@@ -53,13 +56,14 @@ public class ReedPlant : MonoBehaviour
 
         guideText.gameObject.SetActive(false);
     }
-    
+
     void Complete()
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         Debug.Log("보상 지급");
         disableButton.gameObject.SetActive(false);
         completePlate.gameObject.SetActive(true);
+        gameData.currentPoints++;
     }
 
     public void Return()

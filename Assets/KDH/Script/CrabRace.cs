@@ -1,3 +1,4 @@
+using Scenes.Common.Scenes.Common;
 using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,6 +22,8 @@ public class CrabRace : MonoBehaviour
     public TMP_Text guideText;
 
     public GameObject disableButton;
+
+    [SerializeField]private ScriptableGameData gameData;
 
     private void Start()
     {
@@ -119,6 +122,8 @@ public class CrabRace : MonoBehaviour
         guideText.gameObject.SetActive(false);
         disableButton.gameObject.SetActive(false);
         completePlate.gameObject.SetActive(true);
+
+        gameData.currentPoints++;
     }
 
     public void Return()
